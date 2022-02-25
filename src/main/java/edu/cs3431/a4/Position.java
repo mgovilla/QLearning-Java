@@ -3,20 +3,28 @@ package edu.cs3431.a4;
 import edu.cs3431.a4.generics.Action;
 import edu.cs3431.a4.generics.State;
 
-public class Position implements State {
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
+public class Position {
 	int x, y;
 	public Position(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 
-	@Override
-	public Action[] getPossibleActions() {
-		return new Action[]{GridWorldAction.UP, GridWorldAction.DOWN, GridWorldAction.LEFT, GridWorldAction.RIGHT};
+	public List<GridWorldAction> getPossibleActions() {
+		return Arrays.asList(GridWorldAction.UP, GridWorldAction.DOWN, GridWorldAction.LEFT, GridWorldAction.RIGHT);
 	}
 
 	@Override
 	public String toString() {
 		return "Position{x: " + x + ", y: " + y + "}";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(x, y);
 	}
 }

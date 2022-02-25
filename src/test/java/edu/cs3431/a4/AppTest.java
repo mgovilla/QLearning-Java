@@ -1,7 +1,6 @@
 package edu.cs3431.a4;
 
 
-import edu.cs3431.a4.generics.Agent;
 import org.junit.Test;
 
 /**
@@ -21,6 +20,11 @@ public class AppTest {
         };
         Board b = new Board(board, 3, 3);
         GridWorldAgent agent = new GridWorldAgent(new Position(0, 0), 1.0);
-        System.out.println(b.getNextState(GridWorldAction.LEFT, agent).getCurrentState());
+        System.out.println(b.getNextState(GridWorldAction.LEFT, agent).getState());
+    }
+
+    @Test
+    public void testQInput() {
+
     }
 }

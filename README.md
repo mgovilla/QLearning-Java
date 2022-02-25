@@ -26,7 +26,7 @@ static class QInput: (Position, action)
 - train(Board: GridWorld, time: int, rewardFunction: (s)->int)
 - returnPolicy()
 
-chooseNextMove():
+chooseNextMove(Position):
     - get the 4 values from the Q table that correspond to 
     - [Q(s, UP), Q(s, RIGHT), Q(s, DOWN), Q(s, LEFT)]
     - return best action

@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class GridWorldAgent implements Agent<Position> {
+public class GridWorldAgent {
 	Position state;
 	double chanceOfCorrectMove;
 	Random rand;
@@ -20,8 +20,7 @@ public class GridWorldAgent implements Agent<Position> {
 		rand = new Random();
 	}
 
-	@Override
-	public Position getCurrentState() {
+	public Position getState() {
 		return state;
 	}
 
@@ -30,7 +29,6 @@ public class GridWorldAgent implements Agent<Position> {
 		return ACTION_LIST.get((ACTION_LIST.indexOf(a) + where) % ACTION_LIST.size());
 	}
 
-	@Override
 	public Action getActualAction(Action a) {
 		double roll = rand.nextDouble();
 		if (roll <= chanceOfCorrectMove) return a;

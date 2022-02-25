@@ -1,8 +1,6 @@
 package edu.cs3431.a4;
 
 import edu.cs3431.a4.generics.Action;
-import edu.cs3431.a4.generics.Agent;
-import edu.cs3431.a4.generics.State;
 
 import java.util.Random;
 
@@ -50,7 +48,7 @@ public class Board {
 		int dx = action.equals(GridWorldAction.LEFT) ? -1 : action.equals(GridWorldAction.RIGHT) ? 1 : 0;
 		int dy = action.equals(GridWorldAction.DOWN) ? -1 : action.equals(GridWorldAction.UP) ? 1 : 0;
 
-		Position newPos =  new Position(Math.max(0, Math.min(width, currentAgent.getCurrentState().x + dx)), Math.max(0, Math.min(width, currentAgent.getCurrentState().y + dy)));
+		Position newPos =  new Position(Math.max(0, Math.min(width, currentAgent.getState().x + dx)), Math.max(0, Math.min(width, currentAgent.getState().y + dy)));
 		return new GridWorldAgent(newPos, currentAgent.chanceOfCorrectMove);
 	}
 }
