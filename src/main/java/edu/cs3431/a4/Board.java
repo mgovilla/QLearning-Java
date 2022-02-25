@@ -28,7 +28,9 @@ public class Board {
 	/**
 	 * @return value of the board at given pos
 	 */
-	public int getValue(Position pos) { return 0; }
+	public int getValue(Position pos) {
+		return board[pos.y][pos.x];
+	}
 
 	/**
 	 * generate random starting location in the board
@@ -48,7 +50,7 @@ public class Board {
 		int dx = action.equals(GridWorldAction.LEFT) ? -1 : action.equals(GridWorldAction.RIGHT) ? 1 : 0;
 		int dy = action.equals(GridWorldAction.DOWN) ? -1 : action.equals(GridWorldAction.UP) ? 1 : 0;
 
-		Position newPos =  new Position(Math.max(0, Math.min(width, currentAgent.getState().x + dx)), Math.max(0, Math.min(width, currentAgent.getState().y + dy)));
+		Position newPos =  new Position(Math.max(0, Math.min(width-1, currentAgent.getState().x + dx)), Math.max(0, Math.min(height-1, currentAgent.getState().y + dy)));
 		return new GridWorldAgent(newPos, currentAgent.chanceOfCorrectMove);
 	}
 }

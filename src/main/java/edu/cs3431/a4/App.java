@@ -57,7 +57,7 @@ public class App {
 			// Create the board
 			Board board = new Board(boardValues, width, height);
 			QLearning qLearning = new QLearning(board, time, reward, 0.1);
-//			qLearning.train(desiredDirection, alpha, discount);
+			qLearning.train(desiredDirection, 0.1, 1.0);
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found.");
 			e.printStackTrace();

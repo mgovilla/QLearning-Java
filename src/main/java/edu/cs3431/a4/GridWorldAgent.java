@@ -26,7 +26,7 @@ public class GridWorldAgent {
 
 
 	private Action deflectTo(Action a, int where) {
-		return ACTION_LIST.get((ACTION_LIST.indexOf(a) + where) % ACTION_LIST.size());
+		return ACTION_LIST.get((ACTION_LIST.indexOf(a) + where + 4) % ACTION_LIST.size());
 	}
 
 	public Action getActualAction(Action a) {

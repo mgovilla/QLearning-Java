@@ -6,13 +6,23 @@ import java.util.Objects;
 import java.util.Random;
 
 public class QLearning {
-	private static class QInput {
+	static class QInput {
 		Position pos;
 		GridWorldAction action;
 
 		public QInput(Position pos, GridWorldAction action) {
 			this.pos = pos;
 			this.action = action;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if(obj instanceof QInput) {
+				QInput other = (QInput) obj;
+				return other.pos.equals(pos) && other.action.equals(action);
+			}
+
+			return false;
 		}
 
 		@Override
@@ -47,8 +57,7 @@ public class QLearning {
 		while(System.currentTimeMillis() / 1000.0 < time + start) {
 			// create a new agent
 			GridWorldAgent a = new GridWorldAgent(board.getRandomPosition(), chanceOfCorrectMove);
-			boolean done = false;
-			while (!done) {
+			while (true) {
 				GridWorldAction take = chooseNextMove(a.getState(), this.epsilon);
 				GridWorldAgent s_prime = board.getNextState(take, a);
 				int value = board.getValue(s_prime.getState());
@@ -58,7 +67,8 @@ public class QLearning {
 				GridWorldAction bestNewMove = chooseNextMove(s_prime.getState(), 0.0);
 				// double check this equation
 				QTable.put(new QInput(a.getState(), take), oldValue + alpha*(r + discount*QTable.getOrDefault(new QInput(s_prime.getState(), bestNewMove), 0.0) - oldValue));
-				if (value != 0) break;
+				if (value != 0)
+					break;
 				a = s_prime;
 			}
 		}

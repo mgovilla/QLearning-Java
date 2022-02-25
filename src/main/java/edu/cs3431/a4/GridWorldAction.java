@@ -20,6 +20,16 @@ public class GridWorldAction implements Action {
 	private GridWorldAction(Direction dir) {this.dir = dir;}
 
 	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof GridWorldAction) {
+			GridWorldAction other = (GridWorldAction) obj;
+			return other.dir == dir;
+		}
+
+		return false;
+	}
+
+	@Override
 	public int hashCode() {
 		return Objects.hash(dir);
 	}
