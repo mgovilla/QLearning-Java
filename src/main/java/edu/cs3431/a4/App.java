@@ -6,5 +6,8 @@ package edu.cs3431.a4;
 public class App {
 	public static void main(String[] args) {
 		System.out.println("Hello world!");
+		// read the file/inputs
+		// create the board
+		// run qlearning.train(board, etc)
 	}
 }

@@ -11,13 +11,13 @@ GridWorld
 - startingLocation:
 - getValue(Position): int
 - getRandomPos(): Position
+- getNextState(action, previousAgent) : Agent
 
 Agent
 - Position : position
 - chanceOf!Deflection: double // probability of deflection
-- getNextState(action) : Agent 
+- getActualDirection (based on probability)
 
-getNextState(RIGHT) -> new Agent(x+1, y) 90% of the time
 
 Q Learning Algo
 static class QInput: (Position, action)
