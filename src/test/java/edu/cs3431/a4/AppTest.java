@@ -47,7 +47,7 @@ public class AppTest {
 
     @Test
     public void testRun() {
-        App.main(new String[]{"sample.txt", "10", "0.9", "-0.05"});
+        App.main(new String[]{"sample2.txt", "10", "0.9", "-0.1"});
     }
 
     @Test

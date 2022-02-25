@@ -73,13 +73,15 @@ public class QLearning {
 				a = s_prime;
 			}
 		}
+
+		printPolicy();
 	}
 
 	public void printPolicy() {
 		for (int i = 0; i < board.height; i++) {
 			String thisLine = "";
 			for (int j = 0; j < board.width; j++) {
-				Position pos = new Position(i, j);
+				Position pos = new Position(j, i);
 				String printOut = "-";
 				if (board.getValue(pos) == 0.0){
 					List<GridWorldAction> moves = pos.getPossibleActions();
@@ -87,17 +89,17 @@ public class QLearning {
 					for (GridWorldAction move : moves) {
 						if (QTable.getOrDefault(new QInput(pos, move), Double.NEGATIVE_INFINITY) > max) {
 							max = QTable.getOrDefault(new QInput(pos, move), Double.NEGATIVE_INFINITY);
-							if (move.equals(GridWorldAction.UP)) printOut = "^";
+							if (move.equals(GridWorldAction.UP)) printOut = "v";
 							else if (move.equals(GridWorldAction.RIGHT)) printOut = ">";
 							else if (move.equals(GridWorldAction.LEFT)) printOut = "<";
-							else printOut = "V";
+							else printOut = "^";
 						}
 					}
 				}
 				else { printOut = Integer.toString(board.getValue(pos)); }
-				thisLine += printOut + " ";
+				thisLine += printOut + "\t";
 			}
-			System.out.print(thisLine);
+			System.out.println(thisLine);
 		}
 	}
 }
