@@ -1,6 +1,7 @@
 package edu.cs3431.a4;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
@@ -71,6 +72,32 @@ public class QLearning {
 					break;
 				a = s_prime;
 			}
+		}
+	}
+
+	public void printPolicy() {
+		for (int i = 0; i < board.height; i++) {
+			String thisLine = "";
+			for (int j = 0; j < board.width; j++) {
+				Position pos = new Position(i, j);
+				String printOut = "-";
+				if (board.getValue(pos) == 0.0){
+					List<GridWorldAction> moves = pos.getPossibleActions();
+					double max = Double.NEGATIVE_INFINITY;
+					for (GridWorldAction move : moves) {
+						if (QTable.getOrDefault(new QInput(pos, move), Double.NEGATIVE_INFINITY) > max) {
+							max = QTable.getOrDefault(new QInput(pos, move), Double.NEGATIVE_INFINITY);
+							if (move.equals(GridWorldAction.UP)) printOut = "^";
+							else if (move.equals(GridWorldAction.RIGHT)) printOut = ">";
+							else if (move.equals(GridWorldAction.LEFT)) printOut = "<";
+							else printOut = "V";
+						}
+					}
+				}
+				else { printOut = Integer.toString(board.getValue(pos)); }
+				thisLine += printOut + " ";
+			}
+			System.out.print(thisLine);
 		}
 	}
 }
