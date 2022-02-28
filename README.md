@@ -9,6 +9,11 @@ The file representing the map should be in the "boards" directory.
 
 
 
+
+
+
+
+
 Pseudocode:
 
 class Position {x: int , y: int}
