@@ -1,4 +1,13 @@
 # cs4341-a4
+Mayank Govilla, Mago Sheehy, Molly Sunray
+Group 30
+
+To run the program, the first argument is the file name, the second argument is the time in seconds to learn, the third argument is the probability of moving in the desired direction, and the fourth argument is the reward for each action.
+
+The file representing the map should be in the "boards" directory.
+
+
+
 class Position {x: int , y: int}
 Enum ACTION: {UP, DOWN, LEFT, RIGHT}
 
