@@ -33,11 +33,17 @@ public class Board {
 	}
 
 	/**
-	 * generate random starting location in the board
+	 * generate random starting location in the board that is not a terminal
 	 * @return Position
 	 */
 	public Position getRandomPosition() {
-		return new Position(rand.nextInt(width), rand.nextInt(height));
+		int x = rand.nextInt(width);
+		int y = rand.nextInt(height);
+		while (board[y][x] != 0) {
+			x = rand.nextInt(width);
+			y = rand.nextInt(height);
+		}
+		return new Position(x, y);
 	}
 
 	/**
