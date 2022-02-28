@@ -2,10 +2,11 @@ package edu.cs3431.a4;
 
 import edu.cs3431.a4.generics.Action;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
+/**
+ * Action representation
+ */
 public class GridWorldAction implements Action {
 	private enum Direction {
 		UP, RIGHT, DOWN, LEFT

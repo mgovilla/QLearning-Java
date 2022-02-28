@@ -6,7 +6,13 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 
+/**
+ * Implementation of Q-learning algorithm
+ */
 public class QLearning {
+	/**
+	 * Key in Q table
+	 */
 	static class QInput {
 		Position pos;
 		GridWorldAction action;

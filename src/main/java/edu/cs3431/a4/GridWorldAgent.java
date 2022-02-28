@@ -1,13 +1,14 @@
 package edu.cs3431.a4;
 
 import edu.cs3431.a4.generics.Action;
-import edu.cs3431.a4.generics.Agent;
-import edu.cs3431.a4.generics.State;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Agent representation
+ */
 public class GridWorldAgent {
 	Position state;
 	double chanceOfCorrectMove;
@@ -24,11 +25,21 @@ public class GridWorldAgent {
 		return state;
 	}
 
-
+	/**
+	 * Get the action 90 degrees to the left or right
+	 * @param a The current action
+	 * @param where The direction to move in, either 1 or -1
+	 * @return The new action to move
+	 */
 	private Action deflectTo(Action a, int where) {
 		return ACTION_LIST.get((ACTION_LIST.indexOf(a) + where + 4) % ACTION_LIST.size());
 	}
 
+	/**
+	 * Get the actual action that the agent ends up taking
+	 * @param a The desired action
+	 * @return The action to take
+	 */
 	public Action getActualAction(Action a) {
 		double roll = rand.nextDouble();
 		if (roll <= chanceOfCorrectMove) return a;

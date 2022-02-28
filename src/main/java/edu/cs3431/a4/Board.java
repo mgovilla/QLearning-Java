@@ -26,14 +26,16 @@ public class Board {
 	}
 
 	/**
-	 * @return value of the board at given pos
+	 * Get the value of the board position
+	 * @param pos The position to get the value of
+	 * @return Value of the board at given pos
 	 */
 	public int getValue(Position pos) {
 		return board[pos.y][pos.x];
 	}
 
 	/**
-	 * generate random starting location in the board that is not a terminal
+	 * Generate random starting location in the board that is not a terminal
 	 * @return Position
 	 */
 	public Position getRandomPosition() {
@@ -48,8 +50,9 @@ public class Board {
 
 	/**
 	 * Get the next position
-	 * @param desiredAction direction we intend to move
-	 * @return new Agent after moving
+	 * @param desiredAction Direction we intend to move
+	 * @param currentAgent The current agent
+	 * @return New Agent after moving
 	 */
 	public GridWorldAgent getNextState(GridWorldAction desiredAction, GridWorldAgent currentAgent) {
 		Action action = currentAgent.getActualAction(desiredAction);

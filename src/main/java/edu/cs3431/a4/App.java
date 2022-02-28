@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * Hello world!
+ * Main class
  */
 public class App {
 	public static void main(String[] args) {
@@ -54,10 +54,10 @@ public class App {
 			}
 			scanner.close();
 
-			// Create the board
+			// Create the board and run the algorithm
 			Board board = new Board(boardValues, width, height);
 			QLearning qLearning = new QLearning(board, time, reward, 0.1);
-			qLearning.train(desiredDirection, 0.1, 1.0);
+			qLearning.train(desiredDirection, 0.1, 0.9);
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found.");
 			e.printStackTrace();

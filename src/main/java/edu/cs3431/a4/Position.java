@@ -1,12 +1,12 @@
 package edu.cs3431.a4;
 
-import edu.cs3431.a4.generics.Action;
-import edu.cs3431.a4.generics.State;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Position representation
+ */
 public class Position {
 	int x, y;
 	public Position(int x, int y) {
@@ -14,6 +14,10 @@ public class Position {
 		this.y = y;
 	}
 
+	/**
+	 * Get the possible actions to take
+	 * @return A list of the actions
+	 */
 	public List<GridWorldAction> getPossibleActions() {
 		return Arrays.asList(GridWorldAction.UP, GridWorldAction.DOWN, GridWorldAction.LEFT, GridWorldAction.RIGHT);
 	}
