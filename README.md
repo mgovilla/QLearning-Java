@@ -8,6 +8,8 @@ To run the program, the first argument is the file name, the second argument is 
 The file representing the map should be in the "boards" directory.
 
 <br />
+<br />
+<br />
 
 Pseudocode:
 
