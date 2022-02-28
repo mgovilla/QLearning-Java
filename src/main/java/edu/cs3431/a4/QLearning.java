@@ -54,11 +54,23 @@ public class QLearning {
 		this.rand = new Random();
 	}
 
+	/**
+	 * Depending on the value of epsilon, get the best action for the given position or a random action
+	 * @param s The current position
+	 * @param eps The value of epsilon
+	 * @return The best action or a random action
+	 */
 	public GridWorldAction chooseNextMove(Position s, double eps) {
 		GridWorldAction next = s.getPossibleActions().stream().reduce((a, b) -> QTable.getOrDefault(new QInput(s, a), 0.0) > QTable.getOrDefault(new QInput(s, b), 0.0) ? a : b).orElseThrow();
 		return rand.nextDouble() >= eps ? next : s.getPossibleActions().get(rand.nextInt(s.getPossibleActions().size()));
 	}
 
+	/**
+	 * Perform trials to update the Q table
+	 * @param chanceOfCorrectMove The probability of moving in the desired direction
+	 * @param alpha The value of alpha
+	 * @param discount The value of gamma
+	 */
 	public void train(double chanceOfCorrectMove, double alpha, double discount) {
 		double start = System.currentTimeMillis() / 1000.0;
 		while(System.currentTimeMillis() / 1000.0 < time + start) {
@@ -72,7 +84,6 @@ public class QLearning {
 				// update Q table here
 				double oldValue = QTable.getOrDefault(new QInput(a.getState(), take), 0.0);
 				GridWorldAction bestNewMove = chooseNextMove(s_prime.getState(), 0.0);
-				// double check this equation
 				QTable.put(new QInput(a.getState(), take), oldValue + alpha*(r + discount*QTable.getOrDefault(new QInput(s_prime.getState(), bestNewMove), 0.0) - oldValue));
 				if (value != 0)
 					break;
@@ -83,6 +94,9 @@ public class QLearning {
 		printPolicy();
 	}
 
+	/**
+	 * Print the policy to show the actions the agent should take
+	 */
 	public void printPolicy() {
 		for (int i = 0; i < board.height; i++) {
 			String thisLine = "";
