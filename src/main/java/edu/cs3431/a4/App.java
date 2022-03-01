@@ -11,6 +11,7 @@ public class App {
 	public static void main(String[] args) {
 		if (args.length != 4) {
 			System.out.println("Invalid number of arguments.");
+			System.exit(1);
 		}
 
 		String fileName = args[0];
@@ -21,7 +22,7 @@ public class App {
 		int width = 0;
 		int height = 0;
 
-		File file = new File(System.getProperty("user.dir") + "/boards/" + fileName);
+		File file = new File(fileName);
 
 		// Get the board width and height
 		try {

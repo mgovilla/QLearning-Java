@@ -3,7 +3,10 @@ Mayank Govilla, Mago Sheehy, Molly Sunray
 
 Group 30
 
-To run the program, the first argument is the file name, the second argument is the time in seconds to learn, the third argument is the probability of moving in the desired direction, and the fourth argument is the reward for each action.
+To run the program, either open the project in IntelliJ and use the run configurations to pass in arguments
+or use the jar file: java -jar qlearn-1.0.jar "boards/sample.txt" 1.3 0.9 -0.05
+
+the first argument is the file name, the second argument is the time in seconds to learn, the third argument is the probability of moving in the desired direction, and the fourth argument is the reward for each action.
 
 The file representing the map should be in the "boards" directory.
 
