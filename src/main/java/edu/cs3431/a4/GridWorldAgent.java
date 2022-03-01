@@ -1,7 +1,5 @@
 package edu.cs3431.a4;
 
-import edu.cs3431.a4.generics.Action;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -13,7 +11,7 @@ public class GridWorldAgent {
 	Position state;
 	double chanceOfCorrectMove;
 	Random rand;
-	private static final List<Action> ACTION_LIST = Arrays.asList(GridWorldAction.UP, GridWorldAction.RIGHT, GridWorldAction.DOWN, GridWorldAction.LEFT);
+	private static final List<GridWorldAction> ACTION_LIST = Arrays.asList(GridWorldAction.UP, GridWorldAction.RIGHT, GridWorldAction.DOWN, GridWorldAction.LEFT);
 
 	public GridWorldAgent(Position state, double chanceOfCorrectMove) {
 		this.state = state;
@@ -31,7 +29,7 @@ public class GridWorldAgent {
 	 * @param where The direction to move in, either 1 or -1
 	 * @return The new action to move
 	 */
-	private Action deflectTo(Action a, int where) {
+	private GridWorldAction deflectTo(GridWorldAction a, int where) {
 		return ACTION_LIST.get((ACTION_LIST.indexOf(a) + where + 4) % ACTION_LIST.size());
 	}
 
@@ -40,7 +38,7 @@ public class GridWorldAgent {
 	 * @param a The desired action
 	 * @return The action to take
 	 */
-	public Action getActualAction(Action a) {
+	public GridWorldAction getActualAction(GridWorldAction a) {
 		double roll = rand.nextDouble();
 		if (roll <= chanceOfCorrectMove) return a;
 		if (roll <= (1-chanceOfCorrectMove) / 2 + chanceOfCorrectMove) return deflectTo(a, 1);

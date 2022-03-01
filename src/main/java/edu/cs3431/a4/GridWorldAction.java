@@ -1,13 +1,10 @@
 package edu.cs3431.a4;
-
-import edu.cs3431.a4.generics.Action;
-
 import java.util.Objects;
 
 /**
  * Action representation
  */
-public class GridWorldAction implements Action {
+public class GridWorldAction {
 	private enum Direction {
 		UP, RIGHT, DOWN, LEFT
 	}

@@ -1,7 +1,5 @@
 package edu.cs3431.a4;
 
-import edu.cs3431.a4.generics.Action;
-
 import java.util.Random;
 
 /**
@@ -55,7 +53,7 @@ public class Board {
 	 * @return New Agent after moving
 	 */
 	public GridWorldAgent getNextState(GridWorldAction desiredAction, GridWorldAgent currentAgent) {
-		Action action = currentAgent.getActualAction(desiredAction);
+		GridWorldAction action = currentAgent.getActualAction(desiredAction);
 		int dx = action.equals(GridWorldAction.LEFT) ? -1 : action.equals(GridWorldAction.RIGHT) ? 1 : 0;
 		int dy = action.equals(GridWorldAction.DOWN) ? -1 : action.equals(GridWorldAction.UP) ? 1 : 0;
 
